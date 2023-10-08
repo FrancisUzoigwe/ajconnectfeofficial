@@ -4,16 +4,15 @@ import ImagePart from "../../components/private/ImagePart";
 import Mind from "../../components/private/Mind";
 import TextPart from "../../components/private/TextPart";
 import {FiSearch} from "react-icons/fi"
-import TogglePage from "./TogglePage";
+// import TogglePage from "./TogglePage";
 
 const MainScreen = () => {
-  const [toggle, setToggle] = useState<boolean>(false)
-  console.log(setToggle);
+  // const [toggle, setToggle] = useState<boolean>(false)
+  // console.log(setToggle);
   
   return (
     <div className="w-full h-[100%] mt-[68px]  max-sm:w-full overflow-hidden">
-      {toggle && <TogglePage/>}
-      <div className="w-full h-full justify-between  flex ">
+      <div className="w-full h-[auto] justify-between  flex ">
         <div className="max-sm:hidden max-md:hidden h-full ">
           <Blog />
           <Blog stick="sticky top-[90px] z-[-50]" />

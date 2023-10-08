@@ -132,7 +132,7 @@ const Sider = () => {
           onMouseLeave={onLog}
           onClick={() => {
             Swal.fire({
-              text: "Login out🕑",
+              text: "Login out....",
               icon: "success",
               timer: 4000,
             }).then(() => {

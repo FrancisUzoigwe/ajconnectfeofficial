@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ImCancelCircle } from "react-icons/im";
+import { MdCancel } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { changedToggle } from "../../global/GlobalFile";
 import { BsCameraFill } from "react-icons/bs";
@@ -58,20 +58,36 @@ const TogglePage = () => {
         onSubmit={onSubmit}
       >
         <div
-          className="z-[600]  right-0 w-full h-[100px] flex items-center justify-center "
+          className="z-[600] w-full h-[100px] mt-5 flex items-center justify-center "
           onClick={() => {
             dispatch(changedToggle());
           }}
         >
-          <ImCancelCircle className="text-3xl max-sm:text-xl" />
+          <MdCancel className="text-3xl max-sm:text-xl cursor-pointer hover:scale-125 transition-all duration-500 animate-bounce" />
         </div>
         <div className="max-w-[500px] min-h-[400px] z-[600] flex items-center flex-col rounded">
           <div className="min-w-[450px] mt-[10px] h-[250px]  flex items-center flex-col px-3 relative">
-            <div className="mt-[60px] z-[900]">
+            <div className=" flex h-[200px] w-[410px]  justify-center items-start">
+              <img
+                src={avatar ? avatar : image}
+                className="w-full h-[200px] object-cover rounded-lg border bg-white"
+              />
+            </div>
+            <label className=" px-1 py-1  rounded-[50%]" htmlFor="posts">
+              <BsCameraFill className="text-3xl hover:text-gray-700 duration-500 transition-all cursor-pointer " />
+            </label>
+            <div className="w-full h-full flex justify-center py-5 ">
+              <input
+                type="text"
+                className="w-full overflow-hidden min-h-[50px] border border-black rounded outline-none"
+                {...register("message")}
+              />
+            </div>
+            <div className=" ">
               <button
                 className=" 
               bg-purple-400 
-             transition-all duration-500 px-5 py-[6px]  max-sm:text-[10px] rounded font-medium text-white cursor-pointer"
+             transition-all duration-500 px-5 py-[6px] max-sm:text-[10px] rounded font-medium text-white cursor-pointer"
                 type="submit"
                 onClick={() => {
                   Swal.fire({
@@ -82,34 +98,16 @@ const TogglePage = () => {
                   });
                 }}
               >
-                Post
+                Create Post
               </button>
             </div>
-            <div className="w-full h-full flex justify-center py-5 ">
-              <input
-                type="text"
-                className="w-full overflow-hidden min-h-[50px] border "
-                {...register("message")}
-              />
-            </div>
-            <div className=" flex h-[200px] w-[410px]  justify-center items-start">
-              <img
-                src={avatar ? avatar : image}
-                className="w-full h-[200px] object-cover rounded-lg border bg-white"
-              />
-            </div>
+
             <input
               type="file"
               id="posts"
               className="hidden"
               onChange={onHandleImage}
             />
-            <label
-              className="mt-[-17px] px-1 py-1  rounded-[50%]"
-              htmlFor="posts"
-            >
-              <BsCameraFill className="text-3xl hover:text-gray-700 duration-500 transition-all cursor-pointer" />
-            </label>
           </div>
         </div>
       </form>
