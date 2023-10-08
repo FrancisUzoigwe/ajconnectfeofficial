@@ -15,7 +15,6 @@ const ImagePart = () => {
   //   setView(!view);
   // };
 
-  console.log(post);
   return (
     <div>
       {post?.map((el: any) => (
