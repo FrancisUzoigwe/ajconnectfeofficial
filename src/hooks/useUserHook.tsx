@@ -24,6 +24,7 @@ export const useReadAllPost = () => {
   const { data: post } = useQuery({
     queryKey: ["post"],
     queryFn: readAllpostApi,
+    refetchInterval: 10000
   });
 
   return { post };

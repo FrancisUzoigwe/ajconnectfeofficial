@@ -35,13 +35,7 @@ const ImagePart = () => {
                 </div>
                 <div className="flex mt-[-5px] text-[10px] font-semibold items-center">
                   {el?.createdAt}{" "}
-                  <div
-                    className="ml-[15px] text-base flex items-center cursor-pointer relative "
-                    onClick={() => {
-                      // onView();
-                      console.log(post);
-                    }}
-                  >
+                  <div className="ml-[15px] text-base flex items-center cursor-pointer  ">
                     <MdOutlinePublic className="z-[-20]" />
                     <BsFillCaretDownFill className="ml-1 mt-[2px] text-xs z-[-20]" />
                   </div>
@@ -57,8 +51,9 @@ const ImagePart = () => {
             </div>
           </div>
           <div className="w-full flex justify-center items-center">
-          <div className="w-[95%] text-[16px] max-sm:text-[13px]">{el?.message}</div>
-
+            <div className="w-[95%] text-[16px] max-sm:text-[13px]">
+              {el?.message}
+            </div>
           </div>
           <Add />
           <Comment />

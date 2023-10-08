@@ -1,17 +1,17 @@
+import { useState } from "react";
 import { TiMessages } from "react-icons/Ti";
 import { CgProfile } from "react-icons/cg";
 import { IoMdNotifications } from "react-icons/io";
 import { BsCameraReelsFill } from "react-icons/bs";
 import { FaStore } from "react-icons/fa";
 import { TbLogout2 } from "react-icons/tb";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logOut } from "../../global/GlobalFile";
+import Swal from "sweetalert2";
 
 const Sider = () => {
-
-const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const [log, setLog] = useState<boolean>(false);
   const onLog = () => {
@@ -57,7 +57,6 @@ const dispatch = useDispatch()
                 Profile
               </div>
             ) : null}
-            
           </div>
         </Link>
         <Link to="/chat/messages">
@@ -81,57 +80,64 @@ const dispatch = useDispatch()
           </div>
         </Link>
         <Link to="/chat/notifications">
-        <div
-          className="flex justify-center  items-center px-1 max-sm:text-xs relative py-[1px] rounded-[4px]  transition-all duration-300 cursor-pointer  "
-          onMouseLeave={onNot}
-          onMouseEnter={onNot}
-        >
-          {not ? (
-            <div className="px-[7px] py-[1px] rounded-[3px] bg-gray-500 text-white absolute text-[13px] ml-[120px] mt-[-2px]">
-              Notifications
+          <div
+            className="flex justify-center  items-center px-1 max-sm:text-xs relative py-[1px] rounded-[4px]  transition-all duration-300 cursor-pointer  "
+            onMouseLeave={onNot}
+            onMouseEnter={onNot}
+          >
+            {not ? (
+              <div className="px-[7px] py-[1px] rounded-[3px] bg-gray-500 text-white absolute text-[13px] ml-[120px] mt-[-2px]">
+                Notifications
+              </div>
+            ) : null}
+            <div>
+              <IoMdNotifications className="text-3xl p-1 max-sm:text-xl" />
             </div>
-          ) : null}
-          <div>
-            <IoMdNotifications className="text-3xl p-1 max-sm:text-xl" />
+            <div className="w-[15px] h-[15px] items-center justify-center flex text-[11px] absolute text-white ml-4 mt-[-5px] bg-red-500 rounded-[50%]">
+              1
+            </div>
           </div>
-          <div className="w-[15px] h-[15px] items-center justify-center flex text-[11px] absolute text-white ml-4 mt-[-5px] bg-red-500 rounded-[50%]">
-            1
-          </div>
-        </div>
         </Link>
-      <Link to="/chat/reels">
-      <div
-          className="relative flex justify-center items-center cursor-pointer"
-          onMouseEnter={onReel}
-          onMouseLeave={onReel}
-        >
-          <BsCameraReelsFill className="text-xl" />
-          {reel ? (
-            <div className="px-[7px] py-[1px] rounded-[3px] bg-gray-500 text-white absolute text-[13px] ml-[69px] mt-[4px]">
-              Reels
-            </div>
-          ) : null}
-        </div>
-      </Link>
-     <Link to="/chat/store">
-     <div
-          className="relative flex justify-center items-center cursor-pointer"
-          onMouseEnter={onStore}
-          onMouseLeave={onStore}
-        >
-          <FaStore className="text-xl" />
-          {store ? (
-            <div className="px-[7px] py-[1px] rounded-[3px] bg-gray-500 text-white absolute text-[13px] ml-[120px] mt-[4px]">
-              MarketPlace
-            </div>
-          ) : null}
-        </div>
-     </Link>
+        <Link to="/chat/reels">
+          <div
+            className="relative flex justify-center items-center cursor-pointer"
+            onMouseEnter={onReel}
+            onMouseLeave={onReel}
+          >
+            <BsCameraReelsFill className="text-xl" />
+            {reel ? (
+              <div className="px-[7px] py-[1px] rounded-[3px] bg-gray-500 text-white absolute text-[13px] ml-[69px] mt-[4px]">
+                Reels
+              </div>
+            ) : null}
+          </div>
+        </Link>
+        <Link to="/chat/store">
+          <div
+            className="relative flex justify-center items-center cursor-pointer"
+            onMouseEnter={onStore}
+            onMouseLeave={onStore}
+          >
+            <FaStore className="text-xl" />
+            {store ? (
+              <div className="px-[7px] py-[1px] rounded-[3px] bg-gray-500 text-white absolute text-[13px] ml-[120px] mt-[4px]">
+                MarketPlace
+              </div>
+            ) : null}
+          </div>
+        </Link>
         <div
           className="relative flex justify-center items-center cursor-pointer  transition-all duration-300"
           onMouseEnter={onLog}
-          onMouseLeave={onLog} onClick={() => {
-            dispatch(logOut())
+          onMouseLeave={onLog}
+          onClick={() => {
+            Swal.fire({
+              text: "Login out🕑",
+              icon: "success",
+              timer: 4000,
+            }).then(() => {
+              dispatch(logOut());
+            });
           }}
         >
           <TbLogout2 className="text-2xl " />
