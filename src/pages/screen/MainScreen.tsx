@@ -3,7 +3,6 @@ import Blog from "../../components/private/Blog";
 import ImagePart from "../../components/private/ImagePart";
 import Mind from "../../components/private/Mind";
 import TextPart from "../../components/private/TextPart";
-import VideoPart from "../../components/private/VideoPart";
 import {FiSearch} from "react-icons/fi"
 import TogglePage from "./TogglePage";
 
@@ -33,10 +32,8 @@ const MainScreen = () => {
               </div>
             </div>
           </div>
-          <VideoPart />
-          <TextPart />
-          <VideoPart />
           <ImagePart />
+          <TextPart />
           <div className="h-[300vh]  w-[20px] ml-[300px]"></div>
         </div>
         <div className="max-h-[460px] w-[290px] max-sm:hidden mr-11 ">

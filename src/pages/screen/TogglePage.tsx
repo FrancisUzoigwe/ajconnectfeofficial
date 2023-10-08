@@ -1,19 +1,19 @@
+import { useState } from "react";
 import { ImCancelCircle } from "react-icons/im";
-// import pix from
 import { useDispatch } from "react-redux";
 import { changedToggle } from "../../global/GlobalFile";
 import { BsCameraFill } from "react-icons/bs";
-import { useState } from "react";
 import pix from "../../../public/vite.svg";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { postApi } from "../../apis/PostApi";
 import { useSelector } from "react-redux";
+import Swal from "sweetalert2";
 
 const TogglePage = () => {
   const dispatch = useDispatch();
-   const userID = useSelector((state: any) => state.user);
+  const userID = useSelector((state: any) => state.user);
 
   const [image, setImage] = useState<string>(pix);
   const [avatar, setAvatar] = useState<string>("");
@@ -39,11 +39,9 @@ const TogglePage = () => {
     myForm.append("image", image);
     postApi(userID, myForm).then((res: any) => {
       console.log(res);
-      
-    })
+    });
   });
 
-  //   const toggle = useSelector((state: any) => state.toggle);
   return (
     <div
       style={{
@@ -76,7 +74,12 @@ const TogglePage = () => {
              transition-all duration-500 px-5 py-[6px]  max-sm:text-[10px] rounded font-medium text-white cursor-pointer"
                 type="submit"
                 onClick={() => {
-                  alert("clicked");
+                  Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    timer: 2000,
+                    text: "Your post has been successfully created",
+                  });
                 }}
               >
                 Post
